@@ -1,6 +1,7 @@
 class Player
 
   DEFAULT_HP = 100
+  DEFAULT_DAMAGE = 10
 
   attr_reader :name
   attr_accessor :hp
@@ -10,7 +11,9 @@ class Player
     @hp = hp
   end
 
-  def reduce_hp(amount=10)
+
+
+  def reduce_hp(amount=DEFAULT_DAMAGE)
     self.hp -= amount
   end
 end
