@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'player'
+require_relative './lib/player'
 
 class Battle < Sinatra::Base
 
@@ -17,7 +17,7 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @message = session[:message]
+    @message = session[:attack]
     @first_player_name = $player_1.name
     @second_player_name = $player_2.name
     @first_player_hp = $player_1.hp
@@ -26,7 +26,8 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    session[:message] = "Player 2 has been attacked"
+    params[:attack] == $player_1.name ? $player_1.reduce_hp(10) : $player_2.reduce_hp(10)
+    session[:attack] = "#{params[:attack]} has been attacked!"
     redirect '/play'
   end
 

@@ -1,9 +1,16 @@
 class Player
 
-  attr_reader :name, :hp
+  DEFAULT_HP = 100
 
-  def initialize(name)
+  attr_reader :name
+  attr_accessor :hp
+
+  def initialize(name, hp = DEFAULT_HP)
     @name = name
-    @hp = 100
+    @hp = hp
+  end
+
+  def reduce_hp(amount=10)
+    self.hp -= amount
   end
 end
