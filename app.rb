@@ -17,6 +17,7 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
+    @message = session[:message]
     @first_player_name = session[:name1][:name]
     @second_player_name = session[:name2][:name]
     @first_player_hp = session[:name1][:hitpoints]
@@ -24,6 +25,10 @@ class Battle < Sinatra::Base
     erb(:play)
   end
 
+  post '/attack' do
+    session[:message] = "Player 2 has been attacked"
+    redirect '/play'
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

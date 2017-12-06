@@ -1,3 +1,13 @@
-<%= @first_player_name%> vs. <%= @second_player_name %>
-<%= @first_player_name%>: <%= @first_player_hp %>
-<%= @second_player_name %>: <%= @second_player_hp %>
+<%= @first_player_name%> vs. <%= @second_player_name %> <br>
+
+<form action="/attack" method="post">
+  <h3> <%= @first_player_name%>: <%= @first_player_hp %> <input type="submit" value="Attack P1"></h3>
+</form>
+
+<form action="/attack" method="post">
+  <h3> <%=  @second_player_name%>: <%= @second_player_hp %> <input type="submit" value="Attack P2"></h3>
+</form>
+
+<% if !!@message %>
+  <p><%= @message %></p>
+<% end %>
