@@ -9,6 +9,14 @@ feature "Testing Infrastructure" do
     fill_in("player_1", with: "James")
     fill_in("player_2", with: "Lan")
     click_on("Submit")
-    expect(page).to have_content "James Lan"
+    expect(page).to have_content "James vs. Lan"
+  end
+
+  scenario 'players can see their names and hitpoints' do
+    visit('/')
+    fill_in("player_1", with: "James")
+    fill_in("player_2", with: "Lan")
+    click_on("Submit")
+    expect(page).to have_content("James: 100")
   end
 end
